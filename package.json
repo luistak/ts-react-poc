@@ -2,6 +2,14 @@
   "name": "ts-react-poc",
   "version": "0.1.0",
   "private": true,
+  "devDependencies": {
+    "prettier": "^1.17.0",
+    "source-map-explorer": "^1.8.0",
+    "tslint": "^5.16.0",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-plugin-prettier": "^2.0.1",
+    "tslint-react": "^4.0.0"
+  },
   "dependencies": {
     "@types/jest": "^24.0.11",
     "@types/node": "^11.13.5",
@@ -19,7 +27,8 @@
     "build": "react-scripts build",
     "build:analyze": "npm run build && npm run analyze",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint-ts": "tslint -c tslint.json 'src/**/*.{ts,tsx}'"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -29,8 +38,5 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ],
-  "devDependencies": {
-    "source-map-explorer": "^1.8.0"
-  }
+  ]
 }
