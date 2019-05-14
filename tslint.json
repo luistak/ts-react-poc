@@ -5,11 +5,13 @@
     "tslint-config-airbnb",
     "tslint-config-prettier"
   ],
-  "rulesDirectory": [
-    "tslint-plugin-prettier"
-  ],
+  "rulesDirectory": ["tslint-plugin-prettier"],
   "rules": {
     "prettier": true,
+    "import-name": false,
+    "no-console": false,
+    "variable-name": false,
+    "jsx-no-lambda": false,
     "interface-name": false
   }
 }
