@@ -1,6 +1,6 @@
 export default class Todo {
   public text: string;
-  public complete: boolean = true;
+  public complete: boolean = false;
 
   constructor(text: string) {
     this.text = text;
@@ -8,5 +8,6 @@ export default class Todo {
 
   public toggleComplete(): void {
     this.complete = !this.complete;
+    console.log({ complete: this.complete });
   }
 }

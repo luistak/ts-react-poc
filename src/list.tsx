@@ -1,7 +1,5 @@
-import React, { ChangeEvent, FormEvent, useState } from 'react';
+import React, { FormEvent } from 'react';
 import Todo from './models/todo';
-
-type SubmitEvent = FormEvent<HTMLFormElement>;
 
 interface Props {
   todos: Todo[];
@@ -9,15 +7,19 @@ interface Props {
 }
 
 const TodoList: React.FunctionComponent<Props> = ({ onRemoveTodo, todos = [] }) => {
-  const handleDeleteTodoClick = (key: number) => onRemoveTodo(key);
+  const handleDeleteTodoClick = (key: number): void => onRemoveTodo(key);
+  const handleDeleteTodoClick = (key: number): void => onRemoveTodo(key);
 
   return (
     <div className="TodoList">
       {todos.length > 0 &&
         todos.map((todo: Todo, key: number) => (
-          <div key={key}>
-            <div> {todo.text} </div>
-            <button onClick={() => handleDeleteTodoClick(key)}> Deletar </button>
+          <div key={key} className={`todo ${todo.complete ? 'todo--complete' : ''}`}>
+            <div className="todo-text"> {todo.text} </div>
+            <button className="todo-delete" onClick={() => handleDeleteTodoClick(key)}>
+              Deletar
+            </button>
+            <input type="checkbox" checked={todo.complete} onChange={() => todo.toggleComplete()} />
           </div>
         ))}
     </div>
