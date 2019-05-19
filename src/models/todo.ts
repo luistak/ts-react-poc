@@ -8,6 +8,5 @@ export default class Todo {
 
   public toggleComplete(): void {
     this.complete = !this.complete;
-    console.log({ complete: this.complete });
   }
 }

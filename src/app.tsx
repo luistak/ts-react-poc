@@ -12,17 +12,24 @@ const TodoApp: React.FunctionComponent = () => {
   const onAddTodo = (todo: Todo): void => setTodoList(todoList.concat(todo));
 
   const onRemoveTodo = (key: number): void => {
-    const newTodoList: Todo[] = [...todoList];
+    const newTodoList = [...todoList];
     newTodoList.splice(key, 1);
     setTodoList(newTodoList);
   };
 
+  const onToggleTodo = (key: number): void => {
+    const newTodoList = [...todoList];
+    const todo = newTodoList.find((one, index) => index === key);
+    todo.toggleComplete();
+    setTodoList(newTodoList);
+  };
+
   return (
-    <div className="TodoApp">
-      <h1>My Todo app</h1>
+    <main className="TodoApp">
+      <h1 className="TodoApp__title">Todo app</h1>
       <Header onAddTodo={onAddTodo} />
-      <List todos={todoList} onRemoveTodo={onRemoveTodo} />
-    </div>
+      <List todos={todoList} onRemoveTodo={onRemoveTodo} onToggleTodo={onToggleTodo} />
+    </main>
   );
 };
 

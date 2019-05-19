@@ -26,11 +26,11 @@ const TodoHeader: React.FunctionComponent<Props> = ({ onAddTodo }) => {
   };
 
   return (
-    <div className="TodoHeader">
+    <header className="TodoHeader">
       <form onSubmit={handleSubmit}>
         <input onChange={handleInputChange} />
       </form>
-    </div>
+    </header>
   );
 };
 

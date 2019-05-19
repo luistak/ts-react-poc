@@ -1,29 +1,28 @@
 import React, { FormEvent } from 'react';
 import Todo from './models/todo';
+import TodoComponent from './todo';
 
 interface Props {
   todos: Todo[];
+  onToggleTodo(key: number): void;
   onRemoveTodo(key: number): void;
 }
 
-const TodoList: React.FunctionComponent<Props> = ({ onRemoveTodo, todos = [] }) => {
-  const handleDeleteTodoClick = (key: number): void => onRemoveTodo(key);
-  const handleDeleteTodoClick = (key: number): void => onRemoveTodo(key);
-
-  return (
-    <div className="TodoList">
-      {todos.length > 0 &&
-        todos.map((todo: Todo, key: number) => (
-          <div key={key} className={`todo ${todo.complete ? 'todo--complete' : ''}`}>
-            <div className="todo-text"> {todo.text} </div>
-            <button className="todo-delete" onClick={() => handleDeleteTodoClick(key)}>
-              Deletar
-            </button>
-            <input type="checkbox" checked={todo.complete} onChange={() => todo.toggleComplete()} />
-          </div>
-        ))}
-    </div>
-  );
-};
+const TodoList: React.FunctionComponent<Props> = ({ onRemoveTodo, onToggleTodo, todos = [] }) => (
+  <section className="TodoList">
+    {todos.length === 0 ? (
+      <p className="TodoList--empty"> There is no todo on this app :( </p>
+    ) : (
+      todos.map((todo: Todo, key: number) => (
+        <TodoComponent
+          key={key}
+          todo={todo}
+          onRemoveTodo={() => onRemoveTodo(key)}
+          onToggleTodo={() => onToggleTodo(key)}
+        />
+      ))
+    )}
+  </section>
+);
 
 export default TodoList;
